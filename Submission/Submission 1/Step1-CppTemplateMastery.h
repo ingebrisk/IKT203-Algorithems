@@ -59,3 +59,26 @@ template <typename... Args>
 struct TDataPack{
     tuple<Args...> values;
 };
+
+// b) 
+template<typename T, int Size>
+struct TStaticArray{
+private:
+    T arr[Size];
+public:
+    void Populate(int index, T value){
+        if (index < 0 || index >= Size){
+            cout << "Error, index out of bounds" << endl;
+        }else{
+            arr[index] = value;
+        } 
+    }
+
+    void Print() {
+    for (int i = 0; i < Size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    }
+};
+

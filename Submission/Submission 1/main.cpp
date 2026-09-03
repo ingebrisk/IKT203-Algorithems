@@ -1,7 +1,7 @@
 // Submission 1: Master of Templates and Callbacks
 #include <iostream>
 #include "Step1-CppTemplateMastery.h"
-
+#include "Step2-GlobalCallbacks.h"
 using namespace std;
 
 
@@ -75,6 +75,27 @@ int main(){
     myArray.Populate(1, 2); 
     myArray.Populate(2, 3); 
     myArray.Print();
+    cout << "  " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "          2. b) Template-Template Parameters: " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+
+    PrintContainer(myArray);
+    cout << "  " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "    Step 2: Global Callbacks (No Templates) " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "          a) Basic Assignment and Invocation " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+    int (*ptr)(int, int) = Add;
+    cout << ptr(5, 3) << endl;
+    cout << "  " << endl;
+
+    
 
     return 0;
 }

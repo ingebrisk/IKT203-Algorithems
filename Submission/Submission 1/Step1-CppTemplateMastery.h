@@ -82,3 +82,8 @@ public:
     }
 };
 
+// c) 
+template <template <typename, int> class Container, typename T, int N>
+void PrintContainer(Container<T, N>& container) {
+    container.Print();
+}

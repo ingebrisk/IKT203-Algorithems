@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Step1-CppTemplateMastery.h"
 #include "Step2-GlobalCallbacks.h"
+#include "Step3-TheBridge.h"
+#include "Step4-TheOOPTemplatelcassAndContextPointers.h"
 using namespace std;
 
 
@@ -18,6 +20,13 @@ using namespace std;
                 Step 2: Global Callbacks (No Templates)
    ------------------------------------------------------------------     */
 
+/* ------------------------------------------------------------------
+                Step 3: The Bridge (Callbacks + Templates)
+   ------------------------------------------------------------------     */
+
+/* ------------------------------------------------------------------
+                Step 4: The OOP Template Class & Context Pointers
+   ------------------------------------------------------------------     */
 
 int main(){
     cout << " ---------------------------------------------- " << endl;
@@ -78,7 +87,7 @@ int main(){
     cout << "  " << endl;
 
     cout << " --------------------------------------------- " << endl;
-    cout << "          2. b) Template-Template Parameters: " << endl;
+    cout << "          2. c) Template-Template Parameters: " << endl;
     cout << " --------------------------------------------- " << endl;
     cout << "  " << endl;
 
@@ -93,10 +102,100 @@ int main(){
     cout << "  " << endl;
     int (*ptr)(int, int) = Add;
     cout << ptr(5, 3) << endl;
+    cout << (*ptr)(8, 3) << endl;
     cout << "  " << endl;
 
-    
+    cout << " --------------------------------------------- " << endl;
+    cout << "          b) Making It Readable with Type Aliases " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
 
+    using GreetPtr = string (*)(string);
+    GreetPtr greetFunct = Greet;   
+    cout << greetFunct("Ingeborg") << endl;
+    cout << "  " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "          c) Passing Functions as Arguments (Callbacks) " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+
+    int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9,10};
+    cout << "Is Odd results: ";
+    FilterAndPrint(array, size(array), IsOdd) ;
+    cout << " " << endl;
+    cout << "Is Even results: ";
+    FilterAndPrint(array, size(array), IsEven) ;
+    cout << "  " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "          d) Array of Function Pointers " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+
+    using funcPtr = void (*)();
+    funcPtr ptrArray[3] = {Play, Pause, Quit};
+    
+    for (int i = 0; i < 3; i++) {
+        ptrArray[i]();  
+    }
+    cout << " " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "    Step 3: The Bridge (Callbacks + Templates) " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "          a), b), c) and d)  " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+
+    char caracterArray[8] = {'i', 'n', 'g', 'e', 'b', 'o', 'r', 'g'};
+    int integerArray[8] = {1, 4, 2, 6, 8, 9, 11, 23};
+
+    cout << "Characters in array before capitolised: ";
+    for(int i = 0; i < size(caracterArray); i ++){
+        cout << caracterArray[i] << ", ";
+    }
+    cout << "  " << endl;
+
+    ProcessArray (caracterArray, size(caracterArray), CapitalizeChar);
+    cout << "Characters in array is capitolised: ";
+    for(int i = 0; i < size(caracterArray); i ++){
+        cout << caracterArray[i] << ", ";
+    }
+    cout << "  " << endl;
+    cout << "  " << endl;
+
+    cout << "Integers in array before it is multipled with 2: ";
+    for(int i = 0; i < size(integerArray); i ++){
+        cout << integerArray[i] << ", ";
+    }
+    cout << "  " << endl;
+
+    ProcessArray (integerArray, size(integerArray), DoubleInt);
+    cout << "Integers in array is multipled with 2: ";
+    for(int i = 0; i < size(integerArray); i ++){
+        cout << integerArray[i] << ", ";
+    }
+    cout << "  " << endl;
+    cout << "  " << endl;
+
+    cout << " --------------------------------------------- " << endl;
+    cout << "    Step 4: The OOP Template Class & Context Pointers " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "          a), b), c), d) and e)  " << endl;
+    cout << " --------------------------------------------- " << endl;
+    cout << "  " << endl;
+
+    TDataAggregator<int> theAggregator;
+    int intArray[6] = {1, 5, 31, 8, 89, 61};
+    
+    ProcessWithContext(intArray, size(intArray),TDataAggregator<int>::StaticCallback, &theAggregator);
+    cout << "array: ";
+    for(int i = 0; i < size(intArray); i ++){
+        cout << intArray[i] << ", ";
+    }
+    cout << "  " << endl;
+    cout << "Alle the integers in total " << theAggregator.GetTotal() << endl;
     return 0;
 }
 

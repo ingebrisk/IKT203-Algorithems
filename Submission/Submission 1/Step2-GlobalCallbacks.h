@@ -9,8 +9,8 @@ int Add(int x, int y){
 }
 
 // b) 
-string greet(string name){ 
-    string greeting = " hello " + name;
+string Greet(string name){ 
+    string greeting = " Hello, " + name;
     return greeting;
 }
 

@@ -18,15 +18,18 @@ using namespace std;
 
 /* ------------------------------------------------------------------
                 Step 2: Global Callbacks (No Templates)
-   ------------------------------------------------------------------     */
+   ------------------------------------------------------------------    
+        is done in Step2-GlobalCallbacks.h */
 
 /* ------------------------------------------------------------------
                 Step 3: The Bridge (Callbacks + Templates)
-   ------------------------------------------------------------------     */
+   ------------------------------------------------------------------     
+        Step3-TheBridge.h */
 
 /* ------------------------------------------------------------------
                 Step 4: The OOP Template Class & Context Pointers
-   ------------------------------------------------------------------     */
+   ------------------------------------------------------------------   
+        "Step4-TheOOPTemplatelcassAndContextPointers.h"                    */
 
 int main(){
     cout << " ---------------------------------------------- " << endl;
@@ -66,11 +69,11 @@ int main(){
     cout << "  " << endl;
 
     TDataPack<int, string, double> pack;
-    pack.values = make_tuple(5, "hello", 3.14);
+    pack.SetValues(make_tuple(5, "hello", 3.14));
 
-    cout << get<0>(pack.values) << endl;
-    cout << get<1>(pack.values) << endl;
-    cout << get<2>(pack.values) << endl;
+    cout << get<0>(pack.GetValues()) << endl;
+    cout << get<1>(pack.GetValues()) << endl;
+    cout << get<2>(pack.GetValues()) << endl;
     cout << "  " << endl;
 
     cout << " --------------------------------------------- " << endl;

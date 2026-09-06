@@ -56,7 +56,15 @@ public:
 
 template <typename... Args>
 struct TDataPack{
+    private:
     tuple<Args...> values;
+public:
+    void SetValues(tuple<Args...> newValues){
+        values = newValues;
+    }
+    tuple<Args...> GetValues(){
+        return values;
+    }
 };
 
 // b) 
